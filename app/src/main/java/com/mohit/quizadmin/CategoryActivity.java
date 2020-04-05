@@ -158,6 +158,7 @@ public class CategoryActivity extends AppCompatActivity {
         final Map<String,Object> catData = new ArrayMap<>();
         catData.put("NAME",title);
         catData.put("SETS",0);
+        catData.put("COUNTER","1");
 
         final String doc_id = firestore.collection("QUIZ").document().getId();
 
