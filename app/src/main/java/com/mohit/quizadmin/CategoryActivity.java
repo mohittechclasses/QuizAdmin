@@ -33,6 +33,8 @@ public class CategoryActivity extends AppCompatActivity {
     private RecyclerView cat_recycler_view;
     private Button addCatB;
     public static List<CategoryModel> catList = new ArrayList<>();
+    public static int selected_cat_index=0;
+
     private FirebaseFirestore firestore;
     private Dialog loadingDialog, addCatDialog;
     private EditText dialogCatName;
@@ -123,7 +125,7 @@ public class CategoryActivity extends AppCompatActivity {
                             String catName = doc.getString("CAT" + String.valueOf(i) + "_NAME");
                             String catid = doc.getString("CAT" + String.valueOf(i) + "_ID");
 
-                            catList.add(new CategoryModel(catid,catName,"0"));
+                            catList.add(new CategoryModel(catid,catName,"0","1"));
                         }
 
                         adapter = new CategoryAdapter(catList);
@@ -181,7 +183,7 @@ public class CategoryActivity extends AppCompatActivity {
 
                                         Toast.makeText(CategoryActivity.this,"Category added successfully",Toast.LENGTH_SHORT).show();
 
-                                        catList.add(new CategoryModel(doc_id,title,"0"));
+                                        catList.add(new CategoryModel(doc_id,title,"0","1"));
 
                                         adapter.notifyItemInserted(catList.size());
 
